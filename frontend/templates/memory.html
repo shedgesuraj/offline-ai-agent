@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block content %}<h1>Memory & Local RAG</h1>
+<div class="card"><form id="memForm"><input name="content" placeholder="Only save something you explicitly want remembered"><button>Remember</button></form></div>
+<h2>Explicit memories</h2>{% for m in memories %}<div class="card"><b>#{{m.id}}</b> {{m.content}} <button onclick="delMem({{m.id}})">Delete</button></div>{% else %}<p class="muted">No explicit memories.</p>{% endfor %}
+<h2>Indexed documents</h2>{% for d in documents %}<div class="card"><b>#{{d.id}}</b> {{d.path}} <button onclick="delDoc({{d.id}})">Delete index</button></div>{% else %}<p class="muted">No indexed documents.</p>{% endfor %}
+<script>
+memForm.onsubmit=async e=>{e.preventDefault();let r=await fetch('/api/memory',{method:'POST',body:new FormData(memForm)});if(r.ok)location.reload()};
+async function delMem(id){await fetch('/api/memory/'+id,{method:'DELETE'});location.reload()};
+async function delDoc(id){await fetch('/api/knowledge/'+id,{method:'DELETE'});location.reload()};
+</script>{% endblock %}

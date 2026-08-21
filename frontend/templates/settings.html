@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% block content %}
+<h1>Settings & Privacy</h1>
+<div class="card">
+<form method="post">
+<label>Ollama model</label><input name="model" value="{{settings.model}}">
+<label>Offline-only mode</label><select name="offline"><option value="1" {% if settings.offline %}selected{% endif %}>Enabled</option><option value="0" {% if not settings.offline %}selected{% endif %}>Disabled</option></select>
+<label>Autonomous execution</label><select name="auto_execute"><option value="0" {% if not settings.auto_execute %}selected{% endif %}>Approval required (recommended)</option><option value="1" {% if settings.auto_execute %}selected{% endif %}>Allow automatically</option></select>
+<label>Save chat history</label><select name="save_history"><option value="0" {% if not settings.save_history %}selected{% endif %}>Off — privacy first</option><option value="1" {% if settings.save_history %}selected{% endif %}>On</option></select>
+<button>Save settings</button>
+</form>
+<p>Ollama: <span class="badge">{{status}}</span></p>
+<p class="muted">Default privacy mode does not permanently save chat prompts or responses. Explicit memories and documents are saved only when you add them.</p>
+<button id="clearHistory" type="button">Delete saved chat history</button>
+</div>
+<script>
+document.getElementById('clearHistory').onclick=async()=>{if(!confirm('Delete all saved chat history?'))return; const r=await fetch('/api/privacy/clear-history',{method:'POST'}); alert(r.ok?'Saved chat history deleted.':'Delete failed.');};
+</script>
+{% endblock %}

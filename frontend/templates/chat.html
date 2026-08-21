@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block content %}
+<h1>Agent Chat</h1>
+<div id="chatBox" class="card chatbox">{% for m in messages %}<div class="bubble {{m.role}}"><b>{{m.role}}</b><br>{{m.content}}</div>{% endfor %}</div>
+<form id="chatForm"><input id="message" autocomplete="off" placeholder="Ask the local agent..."><button>Run agent</button></form>
+<p class="muted">Examples: <code>list files</code>, <code>read file example.txt</code>, <code>run python: print(2+2)</code>, <code>run terminal: dir</code>, <code>remember: I prefer concise answers</code>.</p>
+<script src="/static/chat.js"></script>
+{% endblock %}

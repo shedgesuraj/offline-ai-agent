@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ title or "Offline AI Agent" }}</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+{% if user %}
+<nav><b>Offline AI Agent</b><span>
+<a href="/dashboard">Dashboard</a><a href="/chat">Chat</a><a href="/memory">Memory/RAG</a>
+<a href="/tasks">Tasks</a><a href="/tools">Tools</a><a href="/activity">Audit</a>
+<a href="/settings">Settings</a><a href="/profile">Profile</a><a href="/logout">Logout</a>
+</span></nav>
+{% endif %}
+<main>{% block content %}{% endblock %}</main>
+</body>
+</html>

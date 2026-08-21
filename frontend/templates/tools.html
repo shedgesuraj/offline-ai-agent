@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block content %}<h1>Tools & Safety</h1><div class="grid">
+<div class="card"><h2>File tool</h2><p>Workspace-only list/read/write operations, bounded reads/writes, and audit events.</p></div>
+<div class="card"><h2>Python tool</h2><p>AST validation, safe-module allowlist, blocked dangerous calls/attributes, isolated Python mode, resource limits, output capture and timeout. Risky execution requires approval by default.</p></div>
+<div class="card"><h2>Terminal tool</h2><p>Allowlisted commands only, workspace path checks, no shell chaining/redirection, resource limits and timeout. Risky execution requires approval by default.</p></div>
+<div class="card"><h2>Verification</h2><p>Successful subprocess exit codes are required before a task is marked verified. Failed Python can request a bounded local-model repair attempt.</p></div>
+<div class="card"><h2>Sandbox boundary</h2><p>Agent subprocesses run in the workspace with resource/process limits and forced cleanup. This is defense-in-depth, not a hostile-code VM.</p></div>
+<div class="card"><h2>Privacy</h2><p>Chat history is off by default. Only explicit memories and explicitly indexed documents persist.</p></div>
+</div>{% endblock %}

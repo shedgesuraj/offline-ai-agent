@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block content %}
+<h1>Dashboard</h1><p class="muted">Offline agent control center.</p>
+<div class="grid">
+<div class="card"><h2>Local model</h2><p>{{ model }}</p><span class="badge">{{ status }}</span></div>
+<div class="card"><h2>Planner</h2><p>Tasks are converted into an explicit execution plan and stored.</p></div>
+<div class="card"><h2>Memory/RAG</h2><p>SQLite memories and indexed workspace documents are retrieved locally.</p></div>
+<div class="card"><h2>Security</h2><p>Workspace boundary, command policy, timeouts and approval mode.</p></div>
+</div>
+<div class="card"><h2>Recent messages</h2>
+{% for m in messages %}<div class="bubble {{m.role}}"><b>{{m.role}}</b><br>{{m.content}}</div>
+{% else %}<p class="muted">No messages yet.</p>{% endfor %}</div>
+{% endblock %}

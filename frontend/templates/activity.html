@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block content %}<h1>Audit Log</h1><div class="card"><table class="table">
+<tr><th>Time</th><th>Action</th><th>Risk</th><th>Approved</th><th>Details</th></tr>
+{% for a in audits %}<tr><td>{{a.created_at}}</td><td>{{a.action}}</td><td>{{a.risk}}</td><td>{{a.approved}}</td><td>{{a.details}}</td></tr>
+{% else %}<tr><td colspan="5">No audit records.</td></tr>{% endfor %}</table></div>{% endblock %}

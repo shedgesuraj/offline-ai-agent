@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block content %}<h1>Agent Tasks</h1>
+{% for t in tasks %}<div class="card"><b>#{{t.id}} · {{t.status}}</b><p>{{t.goal}}</p><pre>{{t.plan}}</pre><p>{{t.result}}</p></div>
+{% else %}<div class="card">No tasks yet.</div>{% endfor %}{% endblock %}
